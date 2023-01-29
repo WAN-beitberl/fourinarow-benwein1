@@ -5,15 +5,18 @@ import java.util.Scanner;
 // 214271397
 public class FourInRow
 {
+	//בגדול משחק יפה, חסר לי OOP, איתמר טכנאי
 	
 	// a function that generate the empty game board 
     public static String[][] generateBoard()
+	    //היית עושה ללוח טיפוס
     {
         String[][] board = new String[7][15];
         for (int i =0;i<board.length;i++)
         {
             for (int j =0;j<board[i].length;j++)
             {
+		    //ניתן לחסוך בשורות בעת כתיבת לולאה זו
                if (j % 2 == 0) board[i][j] = "|";
                 
                   else  board[i][j] = " ";
@@ -46,12 +49,15 @@ public class FourInRow
 
     // a function that drop a X player piece on the lowest spot on the requested column
     public static void dropX(String[][] board)
+	    // יכולת להשתמש בלוח בתור משתנה גלובלי, במקום לקבל אותו כל פעם מחדש
 
     {
-        System.out.println("X turn (insert column 0�6): ");
+        System.out.println("X turn (insert column 0–6): ");
         Scanner scan = new Scanner (System.in); 
 
         int c = 2*scan.nextInt()+1; // get the requested cloumn using the scanner
+	    //יכולת להשתמש בREADER, איתמר טכנאי
+	    //במקום כמה פעולות, יכולת לעשות טיפוס שחקו. איתמר טכנאי
 
         // a loop that runs on the requested cloumn from the buttom
         for (int i =5;i>=0;i--)
@@ -73,8 +79,9 @@ public class FourInRow
     // a function that drop a O player piece on the lowest spot on the requested column
     public static void dropO(String[][] board)
 
+	    //לקריאת הערות, תעבור על הפונקציה הקודמת. איתמר טכנאי
     {
-        System.out.println("O turn (insert column 0�6): ");
+        System.out.println("O turn (insert column 0–6): ");
         Scanner scan = new Scanner (System.in);
         int c = 2*scan.nextInt()+1; // get the requested column using the scanner
 
@@ -98,6 +105,7 @@ public class FourInRow
     }
 
     // a function that checks if one of the players won
+	//פעולה יפה, איתמר טכנאי
     public static String checkWinner(String[][] board)
     {
 
@@ -111,6 +119,7 @@ public class FourInRow
 
                 if ((board[i][j+1] != " ")
 
+		    //תנאי IF ארוך, איתמר טכנאי
                         && (board[i][j+3] != " ")
 
                         && (board[i][j+5] != " ")
@@ -179,6 +188,7 @@ public class FourInRow
 
         }
 
+	    //סך הכל פעולה יפה
 
         // checking for upwards diagnol win
         for (int i=0;i<3;i++)
@@ -215,12 +225,14 @@ public class FourInRow
     public static void main(String args[]) {
     	
         String[][] board = generateBoard(); // generate the game board
-        boolean loop = true; 
+	    // יכולת לעשות משתנה גלובלי ללוח
+        boolean loop = true; //תנאי מיותר
         int count = 0; // turns counter
 
         printBoard(board); 
 
         while(loop)
+		//לולאה טובה להרצה
         {
             if (count % 2 == 0) dropX(board); // red starts so when count is even its the X turn and when count is odd its the O turn
              else dropO(board);
